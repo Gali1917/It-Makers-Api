@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-
+//Esquema de entidad usuario
 const UsuarioSchema = new Schema({
     nombre:{
         type: String,

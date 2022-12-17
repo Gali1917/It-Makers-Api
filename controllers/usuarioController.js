@@ -8,38 +8,29 @@ exports.signIn = async(req, res) =>{
         const usuario = await Usuario.findOne({email: email});
         if(!usuario) return res.status(401).send("El correo no existe");
         if(usuario.password !== password) return res.status(401).send('Password incorrecto');
-
         const token = jwt.sign({_id: usuario._id}, 'secretKey');
         return res.status(200).json({token});
     } catch (error) {
-        
     }
 }
-
 
 //Crear usuario
 exports.crearUsuario = async (req, res) =>{
 try {
     let usuario;
-
     //Creacion de usuario
-
     usuario = new Usuario(req.body);
     await usuario.save();
     console.log(usuario);
-
     const token = jwt.sign({_id: usuario._id}, 'secretKey');
     res.status(200).json({token});
-
     return;
 } catch (error) {
     console.log(error);
     res.status(500).send('Error al procesar la solicitud');
 }
-
     console.log(req.body);
 }
-
 
 //Listar todos los usuarios
 exports.obtenerUsuarios = async(req, res) =>{
@@ -49,8 +40,6 @@ exports.obtenerUsuarios = async(req, res) =>{
     } catch (error) {
         console.log(error);
         res.status(500).send('Error al procesar la solicitud');
-
-        
     }
 }
 
@@ -67,7 +56,6 @@ exports.actualizarUsuario = async(req, res) =>{
         usuario.telefono = telefono;
         usuario.imagen = imagen;
         usuario.password = password
-
         usuario = await Usuario.findOneAndUpdate({_id: req.params.id}, usuario, {new: true})
         res.json(usuario);
     } catch (error) {
@@ -83,7 +71,6 @@ exports.obtenerUsuario = async(req, res) =>{
         if(!usuario){
             res.status(404).json({msg: 'No existe el usuario'})
         }
-    
         res.json(usuario);
     } catch (error) {
         console.log(error);

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 require('dotenv').config({path: '.env'});
 
+//configuracion de acceso a la base de datos
 const conexionDB = async() =>{
     try {
         mongoose.set("strictQuery", false);
