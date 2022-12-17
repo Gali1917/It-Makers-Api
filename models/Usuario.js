@@ -15,10 +15,6 @@ const UsuarioSchema = new Schema({
         type: Number,
         required: true
     },
-    rol:{
-        type: String,
-        required: true
-    },
     imagen:{
         type: String,
         requried: true

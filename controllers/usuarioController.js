@@ -65,7 +65,6 @@ exports.actualizarUsuario = async(req, res) =>{
         usuario.nombre = nombre;
         usuario.email = email;
         usuario.telefono = telefono;
-        usuario.rol = rol;
         usuario.imagen = imagen;
         usuario.password = password
 
